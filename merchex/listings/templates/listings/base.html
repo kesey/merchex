@@ -6,6 +6,12 @@
         <link rel="stylesheet" href="{% static 'listings/styles.css' %}"/>
     </head>
     <body>
+        <nav>
+            <ul>
+                <li><a href="{% url 'band-list' %}">Groupes</a></li>
+                <li><a href="{% url 'list-list' %}">Annonces</a></li>
+            </ul>
+        </nav>
 
         {% block content %}{% endblock %}
 

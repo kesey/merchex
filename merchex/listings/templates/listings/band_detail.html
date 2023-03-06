@@ -1,0 +1,39 @@
+
+{% extends 'listings/base.html' %}
+
+{% block content %}
+
+<h2>{{ band.name }}</h2>
+
+<ul>
+    {% if band.genre %}
+        <li>Genre : {{ band.get_genre_display }}</li>
+    {% endif %}
+    <li>Année de formation : {{ band.year_formed }}</li>
+    <li>Actif : {{ band.active | yesno }}</li>
+    {% if band.official_homepage %}
+        <li><a href="{{ band.official_homepage }}" target="_blank">{{ band.official_homepage }}</a></li>
+    {% endif %}
+
+    {% if lists %}
+        {% for list in lists %}
+            <li><a href="{% url 'list-detail' list.id %}">{{ list.title }}</a></li>
+        {% endfor %}
+    {% endif %}
+
+    {% comment "alternative method no need for lists" %} <!-- comment block -->
+    {# {{ band.name }} #} <!-- comment single line -->
+        {% if band.listing_set.all %} <!-- get all the ads link to that group thanks to the foreign key of Listing class -->
+            {% for list in band.listing_set.all %}
+                <li><a href="{% url 'list-detail' list.id %}">{{ list.title }}</a></li>
+            {% endfor %}
+        {% endif %}
+    {% endcomment %} <!-- comment block -->
+
+</ul>
+
+<p>{{ band.biography }}</p>
+
+<a href="{% url 'band-list' %}">Retour à la liste de groupes</a>
+
+{% endblock %}

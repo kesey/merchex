@@ -1,0 +1,24 @@
+{% extends 'listings/base.html' %}
+
+{% block content %}
+
+<h2>{{ list.title }}</h2>
+
+<ul>
+    {% if list.type %}
+        <li>type : {{ list.get_type_display }}</li>
+    {% endif %}
+    <li>Description : {{ list.description }}</li>
+    <li>Vendu : {{ list.sold | yesno }}</li>
+    <li>Comme Neuf : {{ list.like_new | yesno }}</li>
+    {% if list.year %}
+        <li>Année : {{ list.year }}</li>
+    {% endif %}
+    {% if list.band %}
+        <li>{{ list.band }}</li>
+    {% endif %}
+</ul>
+
+<a href="{% url 'list-list' %}">Retour à la liste d'annonces</a>
+
+{% endblock %}
