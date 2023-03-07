@@ -31,7 +31,7 @@ def contact(request):
                 from_email=form.cleaned_data["email"],
                 recipient_list=["admin@merchex.xyz"]
             )
-            return redirect('email-sent') # redirection to confirmation page
+            return redirect('email-sent') # redirection to confirmation page (with name=email-sent)
     else:
         form = ContactUsForm() # if you arrive on this view (GET method) leave the input blank
 
