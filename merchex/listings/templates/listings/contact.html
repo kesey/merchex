@@ -2,8 +2,12 @@
 
 {% block content %}
 
-<h1>Feel Free to contact us !</h1>
+<h1>Nous sommes là pour vous aider</h1>
 
-<p>Bla bla bla...</p>
+<form action="" method="post" novalidate>
+    {% csrf_token %} <!-- middleware token for security  -->
+    {{ form.as_p }} <!-- as_p to generate <label> & <input> in <p> balises  -->
+    <input type="submit" value="Envoyer">
+</form>
 
 {% endblock %}
