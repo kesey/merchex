@@ -2,13 +2,13 @@ from django.db import models
 from django.core.validators import MinValueValidator, MaxValueValidator
 
 class Band(models.Model):
-    class Genre(models.TextChoices):
+    class Genre(models.TextChoices): # create a drop-down list
         HIP_HOP = "HH"
         SYNTH_POP = "SP"
         ALTERNATIVE_ROCK = "AR"
 
     name = models.fields.CharField(max_length=100)
-    genre = models.fields.CharField(choices=Genre.choices, max_length=5)
+    genre = models.fields.CharField(choices=Genre.choices, max_length=5) # use the drop-down list
     biography = models.fields.CharField(max_length=1000)
     year_formed = models.fields.IntegerField(
         validators=[MinValueValidator(1900), MaxValueValidator(2023)]
@@ -16,7 +16,7 @@ class Band(models.Model):
     active = models.fields.BooleanField(default=True)
     official_homepage = models.fields.URLField(null=True, blank=True)
 
-    def __str__(self):
+    def __str__(self): # by defaut this method return the id, we surcharge it here to return the name
         return f"{self.name}"
 
 class Listing(models.Model):

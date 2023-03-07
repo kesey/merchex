@@ -11,7 +11,7 @@ def band_list(request):
 def band_detail(request, band_id):
     # band = Band.objects.get(id=band_id)
     band = get_object_or_404(Band, pk=band_id) # display an error 404 if the band does not exist
-    lists = Listing.objects.filter(band_id=band_id) # get all the list with a foreign key equal to band_id
+    lists = Listing.objects.filter(band_id=band_id) # get all the lists with a foreign key equal to band_id
     return render(request,
                   "listings/band_detail.html",
                   {"band": band, "lists": lists})
