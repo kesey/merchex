@@ -16,7 +16,7 @@ class Band(models.Model):
     active = models.fields.BooleanField(default=True)
     official_homepage = models.fields.URLField(null=True, blank=True)
 
-    def __str__(self): # by defaut this method return the id, we surcharge it here to return the name
+    def __str__(self): # by default this method return the id, we surcharge it to return the name
         return f"{self.name}"
 
 class Listing(models.Model):
