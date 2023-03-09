@@ -18,6 +18,20 @@ def band_detail(request, band_id):
                   "listings/band_detail.html",
                   {"band": band, "lists": lists})
 
+def band_update(request, band_id):
+    band = get_object_or_404(Band, pk=band_id)
+    if request.method == "POST":
+        formu = BandCreateForm(request.POST, instance=band)
+        if formu.is_valid():
+            formu.save()
+            return redirect("band-detail", band.id)
+    else:
+        formu = BandCreateForm(instance=band) # create a Band form fill with the band that we want to update
+
+    return render(request,
+                  "listings/band_update.html",
+                  {"formulaire": formu})
+
 def contact(request):
     if request.method == "POST":
         formu = ContactUsForm(request.POST) # if the form has been submit (POST method) populate input with data

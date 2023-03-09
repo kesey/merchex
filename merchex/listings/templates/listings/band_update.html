@@ -2,12 +2,12 @@
 
 {% block content %}
 
-<h1>Ajouter une annonce:</h1>
+<h1>Update groupe:</h1>
 
 <form action="" method="post">
     {% csrf_token %} <!-- middleware token for security  -->
     {{ formulaire.as_p }} <!-- as_p to generate <label> & <input> in <p> balises  -->
-    <input type="submit" value="Ajouter">
+    <input type="submit" value="Mettre à jour">
 </form>
 
 {% endblock %}
