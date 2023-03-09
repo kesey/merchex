@@ -7,8 +7,8 @@
 <p>Voici la liste des annonces :</p>
 
 <ul>
-    {% for list in lists %}
-        <li><a href="{% url 'list-detail' list.id %}">{{ list.title }}</a></li>
+    {% for ad in ads %}
+        <li><a href="{% url 'list-detail' ad.id %}">{{ ad.title }}</a></li>
     {% endfor %}
 </ul>
 

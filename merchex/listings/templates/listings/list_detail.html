@@ -2,20 +2,20 @@
 
 {% block content %}
 
-<h2>{{ list.title }}</h2>
+<h2>{{ ad.title }}</h2>
 
 <ul>
-    {% if list.type %}
-        <li>type : {{ list.get_type_display }}</li>
+    {% if ad.type %}
+        <li>type : {{ ad.get_type_display }}</li>
     {% endif %}
-    <li>Description : {{ list.description }}</li>
-    <li>Vendu : {{ list.sold | yesno }}</li>
-    <li>Comme Neuf : {{ list.like_new | yesno }}</li>
-    {% if list.year %}
-        <li>Année : {{ list.year }}</li>
+    <li>Description : {{ ad.description }}</li>
+    <li>Vendu : {{ ad.sold | yesno }}</li>
+    <li>Comme Neuf : {{ ad.like_new | yesno }}</li>
+    {% if ad.year %}
+        <li>Année : {{ ad.year }}</li>
     {% endif %}
-    {% if list.band %}
-        <li>groupe : {{ list.band }}</li>
+    {% if ad.band %}
+        <li>groupe : {{ ad.band }}</li>
     {% endif %}
 </ul>
 

@@ -14,8 +14,8 @@ class BandCreateForm(forms.ModelForm):
         # exclude fields must have default value or NULL enabled with null=True 
 
 class ListCreateForm(forms.ModelForm):
-    class meta:
+    class Meta:
         model = Listing
-        exclude = ("band")
+        fields = "__all__"
 
 

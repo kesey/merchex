@@ -6,7 +6,7 @@
 
 <form action="" method="post">
     {% csrf_token %} <!-- middleware token for security  -->
-    {{ form.as_p }} <!-- as_p to generate <label> & <input> in <p> balises  -->
+    {{ formulaire.as_p }} <!-- as_p to generate <label> & <input> in <p> balises  -->
     <input type="submit" value="Envoyer">
 </form>
 

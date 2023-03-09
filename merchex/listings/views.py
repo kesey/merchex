@@ -20,34 +20,34 @@ def band_detail(request, band_id):
 
 def contact(request):
     if request.method == "POST":
-        form = ContactUsForm(request.POST) # if the form has been submit (POST method) populate input with data
-        if form.is_valid():
+        formu = ContactUsForm(request.POST) # if the form has been submit (POST method) populate input with data
+        if formu.is_valid():
             send_mail(
-                subject=f"Message from {form.cleaned_data['name']} via Merchex Contact Us Form",
-                message=form.cleaned_data["message"],
-                from_email=form.cleaned_data["email"],
+                subject=f"Message from {formu.cleaned_data['name']} via Merchex Contact Us Form",
+                message=formu.cleaned_data["message"],
+                from_email=formu.cleaned_data["email"],
                 recipient_list=["admin@merchex.xyz"]
             )
             return redirect("email-sent") # redirection to confirmation page (with name=email-sent)
     else:
-        form = ContactUsForm() # if you arrive on this view (GET method) leave the input blank
+        formu = ContactUsForm() # if you arrive on this view (GET method) leave the input blank
 
     return render(request,
                   "listings/contact.html",
-                  {"form": form})
+                  {"formulaire": formu})
 
 def band_create(request):
     if request.method == "POST":
-        form = BandCreateForm(request.POST)
-        if form.is_valid():
-            band = form.save() # save instance of Band in database and return it
+        formu = BandCreateForm(request.POST)
+        if formu.is_valid():
+            band = formu.save() # save instance of Band in database and return it
             return redirect("band-detail", band.id) # pass argument to url
     else:
-        form = BandCreateForm()
+        formu = BandCreateForm()
 
     return render(request, 
                   "listings/band_create.html",
-                  {"form": form})
+                  {"formulaire": formu})
 
 def about(request):
     return render(request, "listings/about.html")
@@ -56,26 +56,26 @@ def email_sent(request):
     return render(request, "listings/email_send_confirmation.html")
 
 def list(request):
-    lists = Listing.objects.all()
+    ads = Listing.objects.all()
     return render(request, 
                   "listings/list_list.html", 
-                  {"lists": lists})
+                  {"ads": ads})
 
 def list_detail(request, list_id):
-    list = get_object_or_404(Listing, pk=list_id)
+    ad = get_object_or_404(Listing, pk=list_id)
     return render(request,
                   "listings/list_detail.html",
-                  {"list": list})
+                  {"ad": ad})
 
 def list_create(request):
     if request.method == "POST":
-        form = ListCreateForm(request.POST)
-        if form.is_valid():
-            list = form.save()
-            return redirect("list-detail", list.id)
+        formu = ListCreateForm(request.POST)
+        if formu.is_valid():
+            ad = formu.save()
+            return redirect("list-detail", ad.id)
     else:
-        form = ListCreateForm()
+        formu = ListCreateForm()
 
     return render(request, 
                   "listings/list_create.html",
-                  {"form": form})
+                  {"formulaire": formu})
