@@ -93,3 +93,18 @@ def list_create(request):
     return render(request, 
                   "listings/list_create.html",
                   {"formulaire": formu})
+
+def list_update(request, list_id):
+    ad = get_object_or_404(Listing, pk=list_id)
+
+    if request.method == "POST":
+        formu = ListCreateForm(request.POST, instance=ad)
+        if formu.is_valid:
+            formu.save()
+            return redirect("list-detail", ad.id)
+    else:
+        formu = ListCreateForm(instance=ad)
+
+    return render(request,
+           "listings/list_update.html",
+           {"formulaire": formu})

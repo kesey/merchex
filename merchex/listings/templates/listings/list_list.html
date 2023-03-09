@@ -8,7 +8,10 @@
 
 <ul>
     {% for ad in ads %}
-        <li><a href="{% url 'list-detail' ad.id %}">{{ ad.title }}</a></li>
+        <li>
+            <a href="{% url 'list-detail' ad.id %}">{{ ad.title }}</a>
+            - <a href="{% url 'list-update' ad.id %}">[Editer]</a>
+        </li>
     {% endfor %}
 </ul>
 

@@ -28,5 +28,6 @@ urlpatterns = [
     path('listings/', views.list, name="list-list"),
     path('listings/<int:list_id>/', views.list_detail, name="list-detail"), # <int:list_id> to pass the id to the function in views.list_detail(request, list_id)
     path('listings/add/', views.list_create, name="list-create"),
+    path('listings/<int:list_id>/change/', views.list_update, name="list-update"),
     path('email-confirmation/', views.email_sent, name="email-sent")
 ]

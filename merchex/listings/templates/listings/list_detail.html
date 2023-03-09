@@ -19,6 +19,8 @@
     {% endif %}
 </ul>
 
+<a href="{% url 'list-update' ad.id %}">[Editer]</a>
+
 <a href="{% url 'list-list' %}">Retour à la liste d'annonces</a>
 
 {% endblock %}
