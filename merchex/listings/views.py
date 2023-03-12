@@ -1,4 +1,3 @@
-# from django.http import HttpResponse
 from django.shortcuts import render, redirect, get_object_or_404, get_list_or_404
 from listings.models import Band, Listing
 from listings.forms import ContactUsForm, BandCreateForm, ListCreateForm
@@ -31,6 +30,17 @@ def band_update(request, band_id):
     return render(request,
                   "listings/band_update.html",
                   {"formulaire": formu})
+
+def band_delete(request, band_id):
+    band = get_object_or_404(Band, pk=band_id)
+
+    if request.method == "POST":
+        band.delete()
+        return redirect("band-list")
+    
+    return render(request,
+                  "listings/band_delete.html",
+                  {"band": band})
 
 def contact(request):
     if request.method == "POST":
@@ -108,3 +118,14 @@ def list_update(request, list_id):
     return render(request,
            "listings/list_update.html",
            {"formulaire": formu})
+
+def list_delete(request, list_id):
+    ad = get_object_or_404(Listing, pk=list_id)
+
+    if request.method == "POST":
+        ad.delete()
+        return redirect("list-list")
+    
+    return render(request,
+                  "listings/list_delete.html",
+                  {"ad": ad})

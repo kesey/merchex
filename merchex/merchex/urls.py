@@ -23,11 +23,13 @@ urlpatterns = [
     path('bands/<int:band_id>/', views.band_detail, name="band-detail"), # with name you can refer to this path in the templates {% url 'name' %}
     path('bands/add/', views.band_create, name="band-create"),
     path('bands/<int:band_id>/change/', views.band_update, name="band-update"),
+    path('bands/<int:band_id>/delete/', views.band_delete, name="band-delete"),
     path('about-us/', views.about, name="about"),
     path('contact-us/', views.contact, name="contact"),
     path('listings/', views.list, name="list-list"),
     path('listings/<int:list_id>/', views.list_detail, name="list-detail"), # <int:list_id> to pass the id to the function in views.list_detail(request, list_id)
     path('listings/add/', views.list_create, name="list-create"),
     path('listings/<int:list_id>/change/', views.list_update, name="list-update"),
+    path('listings/<int:list_id>/delete/', views.list_delete, name="list-delete"),
     path('email-confirmation/', views.email_sent, name="email-sent")
 ]
